@@ -1,0 +1,13 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1747514428
+20250503_0018_Inspiracao_Ticket_to_Ride_simple_compose_01jt9r251xeb99dhgcm9mp40h8.jpg::CompressedTexture2D/CompressedTexture2D::5124156248007979268::1747508406::1747508406::1::::<><><>0<>0<>eace9558f8b4317242f4ca8034e2f7b9<>res://.godot/imported/20250503_0018_Inspiracao_Ticket_to_Ride_simple_compose_01jt9r251xeb99dhgcm9mp40h8.jpg-8b4c7bb41cc918ff4040567bcc49d58b.ctex::
+20250503_1457_Plano_de_Fundo_Jogo_simple_compose_01jtbabfhxfggvgp7vb4fbqwvx.jpg::CompressedTexture2D/CompressedTexture2D::8300879241554396794::1747510152::1747510158::1::::<><><>0<>0<>97e2e625393d3d433ee5cc3f0343e507<>res://.godot/imported/20250503_1457_Plano_de_Fundo_Jogo_simple_compose_01jtbabfhxfggvgp7vb4fbqwvx.jpg-9f7a620f9c92edc21edf5c2527f13cd3.ctex::
+button_jogar.gd::GDScript/GDScript::4079715071923556286::1747512359::0::1::::<>Button<><>0<>0<><>::
+button_minus_player.gd::GDScript/GDScript::2578133185100147656::1747512487::0::1::::<>Button<><>0<>0<><>::
+button_plus_player.gd::GDScript/GDScript::9104086915288905792::1747512465::0::1::::<>Button<><>0<>0<><>::
+button_sair.gd::GDScript/GDScript::2339999840971614165::1747510996::0::1::::<>Button<><>0<>0<><>::
+icon.svg::CompressedTexture2D/CompressedTexture2D::8649966100981534371::1747499260::1747499273::1::::<><><>0<>0<>7935fc496888c50d05272cadb40d6cfa<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+panic_button.gd::GDScript/GDScript::1762361081520308834::1747511306::0::1::::<>Button<><>0<>0<><>::
+tela_inicial.tscn::PackedScene/PackedScene::5226541471472766127::1747512541::0::1::::<><><>0<>0<><>::uid://cfagdtdlls8xs::::res://20250503_0018_Inspiracao_Ticket_to_Ride_simple_compose_01jt9r251xeb99dhgcm9mp40h8.jpg<>uid://byeiktywbj1b3::::res://button_jogar.gd<>uid://8lrpqtcpmjof::::res://button_sair.gd
+tela_jogadores.gd::GDScript/GDScript::8452126905469713548::1747512238::0::1::::<>Node2D<><>0<>0<><>::
+tela_jogadores.tscn::PackedScene/PackedScene::5386560295734361984::1747512541::0::1::::<><><>0<>0<><>::uid://dqjajegvn4i5g::::res://20250503_1457_Plano_de_Fundo_Jogo_simple_compose_01jtbabfhxfggvgp7vb4fbqwvx.jpg<>uid://dsojkbk8dg5to::::res://tela_jogadores.gd<>uid://0dx3g610o60u::::res://panic_button.gd<>uid://d2yc8mp2qms1e::::res://button_plus_player.gd<>uid://bcy4qhjvo8a5e::::res://button_minus_player.gd

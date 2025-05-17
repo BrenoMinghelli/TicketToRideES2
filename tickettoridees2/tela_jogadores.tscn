@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://ci0j4joceqg8g"]
+
+[ext_resource type="Texture2D" uid="uid://dqjajegvn4i5g" path="res://20250503_1457_Plano_de_Fundo_Jogo_simple_compose_01jtbabfhxfggvgp7vb4fbqwvx.jpg" id="1_gxxp2"]
+[ext_resource type="Script" uid="uid://dsojkbk8dg5to" path="res://tela_jogadores.gd" id="1_xfro2"]
+[ext_resource type="Script" uid="uid://0dx3g610o60u" path="res://panic_button.gd" id="2_0br5k"]
+[ext_resource type="Script" uid="uid://d2yc8mp2qms1e" path="res://button_plus_player.gd" id="4_mj7yg"]
+[ext_resource type="Script" uid="uid://bcy4qhjvo8a5e" path="res://button_minus_player.gd" id="5_28fle"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xfro2"]
+font_size = 24
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xfro2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577, 324.5)
+scale = Vector2(0.752604, 0.637695)
+texture = ExtResource("1_gxxp2")
+
+[node name="panic_button" type="Button" parent="."]
+offset_left = 982.0
+offset_top = 513.0
+offset_right = 1106.0
+offset_bottom = 613.0
+script = ExtResource("2_0br5k")
+
+[node name="Button_plus_player" type="Button" parent="."]
+show_behind_parent = true
+offset_left = 706.0
+offset_top = 235.0
+offset_right = 744.0
+offset_bottom = 292.0
+script = ExtResource("4_mj7yg")
+
+[node name="Button_minus_player" type="Button" parent="."]
+show_behind_parent = true
+offset_left = 411.0
+offset_top = 234.0
+offset_right = 449.0
+offset_bottom = 291.0
+script = ExtResource("5_28fle")
+
+[node name="Label_player_number" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 571.0
+offset_top = 245.0
+offset_right = 611.0
+offset_bottom = 274.0
+label_settings = SubResource("LabelSettings_xfro2")
