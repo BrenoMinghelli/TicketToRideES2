@@ -1,0 +1,6 @@
+res://tela_jogadores.tscn
+res://button_start_game.gd
+res://tela_inicial.tscn
+res://tela_jogo.tscn
+res://panic_button_2.gd
+res://tela_jogo.gd

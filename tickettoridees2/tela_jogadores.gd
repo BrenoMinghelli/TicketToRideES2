@@ -18,3 +18,6 @@ func sub_pn():
 	if player_number > 2:
 		player_number = player_number -1
 		atualizar_label()
+		
+func return_pn():
+	return player_number

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://do7nwlfnnbl84"]
+
+[ext_resource type="Texture2D" uid="uid://do4l16hx636w2" path="res://mapa_jogo.jpg" id="1_53u3c"]
+[ext_resource type="Script" uid="uid://fbufsbbha4hm" path="res://tela_jogo.gd" id="1_fyk8h"]
+[ext_resource type="Script" uid="uid://cmiaj725euknc" path="res://panic_button_2.gd" id="2_fyk8h"]
+
+[node name="tela_jogo" type="Node2D"]
+script = ExtResource("1_fyk8h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(312, 323.563)
+scale = Vector2(0.325, 0.340281)
+texture = ExtResource("1_53u3c")
+
+[node name="panic_button_2" type="Button" parent="."]
+offset_left = 949.0
+offset_top = 528.0
+offset_right = 1121.0
+offset_bottom = 628.0
+script = ExtResource("2_fyk8h")
