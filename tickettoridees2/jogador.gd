@@ -2,6 +2,7 @@ extends Node2D
 
 #array da mao do jogador
 var mao: Array[Carta]
+var pontuação: int = 0
 @onready var baralho = get_parent().get_node("Baralho")
 
 #retorna o texto para atualizar a mao do jogador na tela

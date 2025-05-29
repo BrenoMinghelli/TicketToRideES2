@@ -2,9 +2,11 @@ extends Node2D
 
 #var que recebe a quantidade de jogadores
 var player_number = 0
+var rotas: Array[Rota]
 
 #variaveis dos outros nodes para as funções funcionarem adequadamente
 @onready var baralho = $Baralho
+@onready var tabuleiro = $Tabuleiro
 @onready var j1 = $Jogador
 @onready var botao_comprar = $Button_comprar
 @onready var botao_comprar_topo = $Button_comprar_topo
@@ -16,6 +18,8 @@ var player_number = 0
 @onready var botao_conquistar = $Button_conq_rota
 
 @onready var label_mao = $Scroll_mao/Label_mao_jogador
+
+
 
 #esconde os botoes das ações que o jogador pode tomar no seu turno
 func hide_button_action():
@@ -67,4 +71,15 @@ func _ready():
 	#compra da mao inicial do jogador
 	for i in range(5):
 		comprar_p1(5)
+	
+	
+	rotas = tabuleiro.init_rotas()
+	
+	#print pra debug
+	for i in range(rotas.size()):
+		var ro = rotas[i]
+		print("Rota: %d - %s - %s, Tamanho = %d, Cor = %s" 
+	% [i+1, ro.cidade1, ro.cidade2, ro.tamanho, Rota.Cor.keys()[ro.cor]])
+		
+	
 	

@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://do7nwlfnnbl84"]
+[gd_scene load_steps=14 format=3 uid="uid://do7nwlfnnbl84"]
 
 [ext_resource type="Script" uid="uid://fbufsbbha4hm" path="res://tela_jogo.gd" id="1_fyk8h"]
 [ext_resource type="Texture2D" uid="uid://digf81jhb11fl" path="res://assets/mapa_jogo.jpg" id="2_250ra"]
 [ext_resource type="Script" uid="uid://cmiaj725euknc" path="res://panic_button_2.gd" id="2_fyk8h"]
+[ext_resource type="Script" uid="uid://bunmtguyctauv" path="res://tabuleiro.gd" id="3_fgria"]
 [ext_resource type="Script" uid="uid://ck2fi2odlj0jv" path="res://baralho.gd" id="4_250ra"]
 [ext_resource type="Script" uid="uid://b28vk84yyv6q" path="res://jogador.gd" id="5_63efy"]
 [ext_resource type="Script" uid="uid://ctc33gjexp1j3" path="res://button_comprar.gd" id="6_owa68"]
@@ -16,10 +17,11 @@
 [node name="tela_jogo" type="Node2D"]
 script = ExtResource("1_fyk8h")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Tabuleiro" type="Sprite2D" parent="."]
 position = Vector2(313, 324)
 scale = Vector2(0.325, 0.340281)
 texture = ExtResource("2_250ra")
+script = ExtResource("3_fgria")
 
 [node name="panic_button_2" type="Button" parent="."]
 offset_left = 86.0
