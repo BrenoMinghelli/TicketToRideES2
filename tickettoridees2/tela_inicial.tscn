@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgp1my3rp8m4n"]
 
-[ext_resource type="Texture2D" uid="uid://cfagdtdlls8xs" path="res://20250503_0018_Inspiracao_Ticket_to_Ride_simple_compose_01jt9r251xeb99dhgcm9mp40h8.jpg" id="1_g50o1"]
+[ext_resource type="Texture2D" uid="uid://cfagdtdlls8xs" path="res://assets/20250503_0018_Inspiracao_Ticket_to_Ride_simple_compose_01jt9r251xeb99dhgcm9mp40h8.jpg" id="1_g50o1"]
 [ext_resource type="Script" uid="uid://byeiktywbj1b3" path="res://button_jogar.gd" id="2_8bm7t"]
 [ext_resource type="Script" uid="uid://8lrpqtcpmjof" path="res://button_sair.gd" id="3_8bm7t"]
 

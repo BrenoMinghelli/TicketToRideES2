@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do4l16hx636w2"
-path="res://.godot/imported/mapa_jogo.jpg-7ddc873db68242dfdc52eaf60b64ff68.ctex"
+uid="uid://b4au1itu5oo6t"
+path="res://.godot/imported/Laranja.png-6896f41c0d8c8a577d1df933957bc38d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mapa_jogo.jpg"
-dest_files=["res://.godot/imported/mapa_jogo.jpg-7ddc873db68242dfdc52eaf60b64ff68.ctex"]
+source_file="res://assets/cartas/Laranja.png"
+dest_files=["res://.godot/imported/Laranja.png-6896f41c0d8c8a577d1df933957bc38d.ctex"]
 
 [params]
 

@@ -4,7 +4,9 @@ extends Button
 
 func _ready():
 	pressed.connect(Callable(self,"_on_pressed"))
-	
+
+#muda para a tela do jogo transferindo a quantidade de jogadores que vão
+#participar do jogo
 func _on_pressed():
 	var next_scene = load("res://tela_jogo.tscn").instantiate()
 	var controle = tela.return_pn()

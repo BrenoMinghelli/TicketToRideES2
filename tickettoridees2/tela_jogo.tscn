@@ -1,20 +1,108 @@
-[gd_scene load_steps=4 format=3 uid="uid://do7nwlfnnbl84"]
+[gd_scene load_steps=13 format=3 uid="uid://do7nwlfnnbl84"]
 
-[ext_resource type="Texture2D" uid="uid://do4l16hx636w2" path="res://mapa_jogo.jpg" id="1_53u3c"]
 [ext_resource type="Script" uid="uid://fbufsbbha4hm" path="res://tela_jogo.gd" id="1_fyk8h"]
+[ext_resource type="Texture2D" uid="uid://digf81jhb11fl" path="res://assets/mapa_jogo.jpg" id="2_250ra"]
 [ext_resource type="Script" uid="uid://cmiaj725euknc" path="res://panic_button_2.gd" id="2_fyk8h"]
+[ext_resource type="Script" uid="uid://ck2fi2odlj0jv" path="res://baralho.gd" id="4_250ra"]
+[ext_resource type="Script" uid="uid://b28vk84yyv6q" path="res://jogador.gd" id="5_63efy"]
+[ext_resource type="Script" uid="uid://ctc33gjexp1j3" path="res://button_comprar.gd" id="6_owa68"]
+[ext_resource type="Script" uid="uid://c8xb6h5s38pds" path="res://button_comprar_topo.gd" id="7_fe401"]
+[ext_resource type="Script" uid="uid://dkkafs5ld21ch" path="res://button_comprar_pos_1.gd" id="8_b05ms"]
+[ext_resource type="Script" uid="uid://c4jnmgh6s4bt8" path="res://button_comprar_pos_2.gd" id="9_ytlgt"]
+[ext_resource type="Script" uid="uid://t24rpvtqrq4m" path="res://button_comprar_pos_3.gd" id="10_ky4tq"]
+[ext_resource type="Script" uid="uid://cq5sni0tt7w3h" path="res://button_comprar_pos_4.gd" id="11_toca8"]
+[ext_resource type="Script" uid="uid://cauk2fq8kph" path="res://button_comprar_pos_5.gd" id="12_fgria"]
 
 [node name="tela_jogo" type="Node2D"]
 script = ExtResource("1_fyk8h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(312, 323.563)
+position = Vector2(313, 324)
 scale = Vector2(0.325, 0.340281)
-texture = ExtResource("1_53u3c")
+texture = ExtResource("2_250ra")
 
 [node name="panic_button_2" type="Button" parent="."]
-offset_left = 949.0
-offset_top = 528.0
-offset_right = 1121.0
-offset_bottom = 628.0
+offset_left = 86.0
+offset_top = 548.0
+offset_right = 145.0
+offset_bottom = 591.0
 script = ExtResource("2_fyk8h")
+
+[node name="Baralho" type="Node" parent="."]
+script = ExtResource("4_250ra")
+
+[node name="Jogador" type="Node2D" parent="."]
+script = ExtResource("5_63efy")
+
+[node name="Button_conq_rota" type="Button" parent="."]
+offset_left = 749.0
+offset_top = 159.0
+offset_right = 989.0
+offset_bottom = 237.0
+text = "Conquistar Rota"
+
+[node name="Button_comprar" type="Button" parent="."]
+offset_left = 751.0
+offset_top = 36.0
+offset_right = 991.0
+offset_bottom = 118.0
+text = "Comprar Carta"
+script = ExtResource("6_owa68")
+
+[node name="Button_comprar_topo" type="Button" parent="."]
+offset_left = 663.0
+offset_top = 36.0
+offset_right = 784.0
+offset_bottom = 101.0
+text = "Comprar
+Aleatória"
+script = ExtResource("7_fe401")
+
+[node name="Button_comprar_pos1" type="Button" parent="."]
+offset_left = 827.0
+offset_top = 35.0
+offset_right = 945.0
+offset_bottom = 98.0
+text = "p1"
+script = ExtResource("8_b05ms")
+
+[node name="Button_comprar_pos2" type="Button" parent="."]
+offset_left = 975.0
+offset_top = 36.0
+offset_right = 1092.0
+offset_bottom = 98.0
+text = "p2"
+script = ExtResource("9_ytlgt")
+
+[node name="Button_comprar_pos3" type="Button" parent="."]
+offset_left = 663.0
+offset_top = 125.0
+offset_right = 784.0
+offset_bottom = 188.0
+text = "p3"
+script = ExtResource("10_ky4tq")
+
+[node name="Button_comprar_pos4" type="Button" parent="."]
+offset_left = 826.0
+offset_top = 124.0
+offset_right = 948.0
+offset_bottom = 189.0
+text = "p4"
+script = ExtResource("11_toca8")
+
+[node name="Button_comprar_pos5" type="Button" parent="."]
+offset_left = 976.0
+offset_top = 121.0
+offset_right = 1099.0
+offset_bottom = 187.0
+text = "p5"
+script = ExtResource("12_fgria")
+
+[node name="Scroll_mao" type="ScrollContainer" parent="."]
+offset_left = 652.0
+offset_top = 456.0
+offset_right = 774.0
+offset_bottom = 607.0
+
+[node name="Label_mao_jogador" type="Label" parent="Scroll_mao"]
+layout_mode = 2
