@@ -1,4 +1,2 @@
 res://tela_jogo.tscn
-res://rota.gd
-res://tabuleiro.gd
-res://tela_jogo.gd
+res://tela_jogadores.tscn
