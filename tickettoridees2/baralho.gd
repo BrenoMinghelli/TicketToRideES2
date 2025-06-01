@@ -12,7 +12,8 @@ func inicializar_baralho():
 	]
 	#seta a cor da carta + a textura, que pode ser ou nao usado futuramente
 	for cor in cores_normais:
-		var nome_cor: String = Carta.Cor.keys()[cor]
+		#var nome_cor: String = Carta.Cor.keys()[cor]
+		var nome_cor: String = Carta.Cor.keys()[cor].to_lower()
 		var textura_path: String = "res://assets/cartas/%s.png" % nome_cor
 		var textura: Texture2D = load(textura_path)
 		#adiciona 12 cartas de cada no baralho
