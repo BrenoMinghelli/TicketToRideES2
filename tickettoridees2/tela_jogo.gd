@@ -7,6 +7,7 @@ var rota_selecionada: int = -1
 
 # variáveis dos outros nodes para as funções funcionarem adequadamente
 @onready var baralho = $Baralho
+@onready var baralho_destinos := BaralhoDestinos.new()
 @onready var tabuleiro = $Tabuleiro
 @onready var j1 = $Jogador
 @onready var botao_comprar = $Button_comprar
@@ -89,6 +90,11 @@ func _ready():
 	hide_button_compra()
 	print(player_number)
 	baralho.imprimir_baralho()
+	
+	add_child(baralho_destinos)
+	baralho_destinos.inicializar_baralho()
+	baralho_destinos.embaralhar()
+	baralho_destinos.imprimir_baralho()
 
 	for i in range(5):
 		comprar_p1(5)
