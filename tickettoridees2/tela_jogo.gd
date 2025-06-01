@@ -20,8 +20,6 @@ var rota_selecionada: int = -1
 
 @onready var label_mao = $Scroll_mao/Label_mao_jogador
 
-func _on_rota_clicada(index: int) -> void:
-	rota_selecionada = index
 
 func hide_button_action():
 	botao_comprar.visible = false
@@ -103,5 +101,5 @@ func _ready():
 			% [i+1, ro.cidade1, ro.cidade2, ro.tamanho, Rota.Cor.keys()[ro.cor]])
 
 	#se quiser testar em alguma rota basta mudar aqui.
-	rota_selecionada = 1
+	rota_selecionada = -1
 	botao_conquistar.pressed.connect(_on_botao_conquistar_pressed)
