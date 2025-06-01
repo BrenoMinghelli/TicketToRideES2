@@ -1,10 +1,11 @@
 extends Node2D
 
-#var que recebe a quantidade de jogadores
+
 var player_number = 0
 var rotas: Array[Rota]
+var rota_selecionada: int = -1
 
-#variaveis dos outros nodes para as funções funcionarem adequadamente
+# variáveis dos outros nodes para as funções funcionarem adequadamente
 @onready var baralho = $Baralho
 @onready var tabuleiro = $Tabuleiro
 @onready var j1 = $Jogador
@@ -19,14 +20,13 @@ var rotas: Array[Rota]
 
 @onready var label_mao = $Scroll_mao/Label_mao_jogador
 
+func _on_rota_clicada(index: int) -> void:
+	rota_selecionada = index
 
-
-#esconde os botoes das ações que o jogador pode tomar no seu turno
 func hide_button_action():
 	botao_comprar.visible = false
 	botao_conquistar.visible = false
 
-#esconde os botoes das opções de compra do jogador
 func hide_button_compra():
 	botao_comprar_topo.visible = false
 	botao_comprar_pos_1.visible = false
@@ -35,12 +35,10 @@ func hide_button_compra():
 	botao_comprar_pos_4.visible = false
 	botao_comprar_pos_5.visible = false
 
-#faz aparecer os botões das ações possiveis
 func appear_button_action():
 	botao_comprar.visible = true
 	botao_conquistar.visible = true
 
-#faz aparecer quais cartas o jogador pode comprar
 func appear_button_compra():
 	botao_comprar_topo.visible = true
 	botao_comprar_pos_1.visible = true
@@ -48,38 +46,62 @@ func appear_button_compra():
 	botao_comprar_pos_3.visible = true
 	botao_comprar_pos_4.visible = true
 	botao_comprar_pos_5.visible = true
-	
 
-#adiciona a mão do jogador uma carta da posição N do baralho
-#importante pois as 5 primeiras cartas do baralho sempre sao reveladas e
-#pode ser escolhidas diretamente, enquanto a sexta fica escondida
-func comprar_p1(pos:int):
-	j1.comprar_carta_p1(pos,baralho)
-	#print para debug
+func comprar_p1(pos: int):
+	j1.comprar_carta_p1(pos, baralho)
 	j1.imprimir_mao()
-	#atualiza a mão do jogador na tela
 	label_mao.text = j1.atualizar_ui_mao()
 
+func _on_botao_conquistar_pressed() -> void:
+	if rota_selecionada < 0 or rota_selecionada >= rotas.size():
+		print("Nenhuma rota selecionada para conquistar!")
+		return
+	var rota = rotas[rota_selecionada]
+
+	if rota.conquistada:
+		print("A rota já foi conquistada por outro jogador!")
+		return
+
+	var cor_da_rota = rota.cor
+	# print(rota.Cor)
+	var custo = rota.tamanho
+	var contagem = j1.contar_para_rota(cor_da_rota)
+
+	if contagem["cor"] + contagem["coringa"] < custo:
+		print("Você não tem cartas suficientes para conquistar esta rota!")
+		return
+
+	var pagou = j1.gastar_cartas_para_rota(cor_da_rota, custo)
+	if not pagou:
+		print("Erro ao descartar cartas!")
+		return
+
+	rota.conquistar(j1.id)
+
+	j1.adicionar_pontos(rota.pontos)
+	print("Rota conquistada! Você ganhou %d pontos." % rota.pontos)
+
+	label_mao.text = j1.atualizar_ui_mao()
+
+	rota_selecionada = -1
+	
+	j1.imprimir_mao()
 
 func _ready():
-	#esconde os botoes que nao aparecem inicialmente
 	hide_button_compra()
-	#print para debug
 	print(player_number)
-	#print para debug
 	baralho.imprimir_baralho()
-	#compra da mao inicial do jogador
+
 	for i in range(5):
 		comprar_p1(5)
-	
-	
+
 	rotas = tabuleiro.init_rotas()
-	
-	#print pra debug
+
 	for i in range(rotas.size()):
 		var ro = rotas[i]
-		print("Rota: %d - %s - %s, Tamanho = %d, Cor = %s" 
-	% [i+1, ro.cidade1, ro.cidade2, ro.tamanho, Rota.Cor.keys()[ro.cor]])
-		
-	
-	
+		print("Rota: %d - %s - %s, Tamanho = %d, Cor = %s"
+			% [i+1, ro.cidade1, ro.cidade2, ro.tamanho, Rota.Cor.keys()[ro.cor]])
+
+	#se quiser testar em alguma rota basta mudar aqui.
+	rota_selecionada = 1
+	botao_conquistar.pressed.connect(_on_botao_conquistar_pressed)
