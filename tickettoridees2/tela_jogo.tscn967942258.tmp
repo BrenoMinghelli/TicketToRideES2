@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://do7nwlfnnbl84"]
+[gd_scene load_steps=16 format=3 uid="uid://do7nwlfnnbl84"]
 
 [ext_resource type="Script" uid="uid://fbufsbbha4hm" path="res://tela_jogo.gd" id="1_fyk8h"]
 [ext_resource type="Texture2D" uid="uid://digf81jhb11fl" path="res://assets/mapa_jogo.jpg" id="2_250ra"]
@@ -13,10 +13,8 @@
 [ext_resource type="Script" uid="uid://t24rpvtqrq4m" path="res://button_comprar_pos_3.gd" id="10_ky4tq"]
 [ext_resource type="Script" uid="uid://cq5sni0tt7w3h" path="res://button_comprar_pos_4.gd" id="11_toca8"]
 [ext_resource type="Script" uid="uid://cauk2fq8kph" path="res://button_comprar_pos_5.gd" id="12_fgria"]
-[ext_resource type="Script" uid="uid://c2ps7r1gh6re0" path="res://button_comprar_bilhetes_destino_1.gd" id="14_fi4gj"]
-[ext_resource type="Script" uid="uid://c6vwi8ksbyeod" path="res://button_comprar_bilhetes.gd" id="14_ixv8w"]
-[ext_resource type="Script" uid="uid://bex6q5q5nfu6w" path="res://button_comprar_bilhetes_destino_2.gd" id="15_ixv8w"]
-[ext_resource type="Script" uid="uid://bex6q5q5nfu6w" path="res://button_comprar_bilhetes_destino_3.gd" id="17_21a76"]
+[ext_resource type="Script" uid="uid://c2ps7r1gh6re0" path="res://button_comprar_bilhetes_destino_2.gd" id="14_fi4gj"]
+[ext_resource type="Script" uid="uid://bex6q5q5nfu6w" path="res://button_comprar_bilhetes_destino_3.gd" id="15_ixv8w"]
 
 [node name="tela_jogo" type="Node2D"]
 script = ExtResource("1_fyk8h")
@@ -106,51 +104,41 @@ script = ExtResource("12_fgria")
 
 [node name="Scroll_mao" type="ScrollContainer" parent="."]
 offset_left = 652.0
-offset_top = 421.0
-offset_right = 780.0
+offset_top = 456.0
+offset_right = 774.0
 offset_bottom = 607.0
 
 [node name="Label_mao_jogador" type="Label" parent="Scroll_mao"]
 layout_mode = 2
 
-[node name="Scroll_bilhetes_destino" type="ScrollContainer" parent="."]
-offset_left = 808.0
-offset_top = 415.0
-offset_right = 1136.0
-offset_bottom = 608.0
-
-[node name="Label_bilhetes_jogador" type="Label" parent="Scroll_bilhetes_destino"]
-layout_mode = 2
-text = "Bilhetes obtidos:"
-
-[node name="Button_comprar_bilhetes" type="Button" parent="."]
+[node name="Button_comprar_bilhetes_destino" type="Button" parent="."]
 offset_left = 749.0
 offset_top = 269.0
 offset_right = 989.0
 offset_bottom = 347.0
 text = "Comprar Bilhetes Destino"
-script = ExtResource("14_ixv8w")
 
-[node name="Button_comprar_bilhetes_destino1" type="Button" parent="."]
-offset_left = 652.0
-offset_top = 88.0
-offset_right = 1133.0
-offset_bottom = 162.0
+[node name="Scroll_bilhetes_destino" type="ScrollContainer" parent="."]
+offset_left = 808.0
+offset_top = 456.0
+offset_right = 930.0
+offset_bottom = 607.0
+
+[node name="Label_bilhestes_jogador" type="Label" parent="Scroll_bilhetes_destino"]
+layout_mode = 2
+
+[node name="Button_comprar_bilhetes_destino2" type="Button" parent="."]
+offset_left = 655.0
+offset_top = 265.0
+offset_right = 862.0
+offset_bottom = 416.0
 text = "destino 1"
 script = ExtResource("14_fi4gj")
 
-[node name="Button_comprar_bilhetes_destino2" type="Button" parent="."]
-offset_left = 654.0
-offset_top = 177.0
-offset_right = 1132.0
-offset_bottom = 250.0
+[node name="Button_comprar_bilhetes_destino3" type="Button" parent="."]
+offset_left = 909.0
+offset_top = 268.0
+offset_right = 1116.0
+offset_bottom = 419.0
 text = "destino 2"
 script = ExtResource("15_ixv8w")
-
-[node name="Button_comprar_bilhetes_destino3" type="Button" parent="."]
-offset_left = 654.0
-offset_top = 265.0
-offset_right = 1132.0
-offset_bottom = 336.0
-text = "destino 3"
-script = ExtResource("17_21a76")
