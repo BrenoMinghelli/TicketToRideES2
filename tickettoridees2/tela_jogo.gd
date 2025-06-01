@@ -6,7 +6,7 @@ var rotas: Array[Rota]
 var rota_selecionada: int = -1
 var destinos_em_oferta: Array[CartaDestino] = []
 var bilhetes_jogador: Array[CartaDestino] = [] 
-
+var baralho_destinos: BaralhoDestinos = BaralhoDestinos.new()
 
 # variáveis dos outros nodes para as funções funcionarem adequadamente
 @onready var baralho = $Baralho
