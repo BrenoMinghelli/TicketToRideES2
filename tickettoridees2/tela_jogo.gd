@@ -20,7 +20,6 @@ var rota_selecionada: int = -1
 
 @onready var label_mao = $Scroll_mao/Label_mao_jogador
 
-
 func hide_button_action():
 	botao_comprar.visible = false
 	botao_conquistar.visible = false
