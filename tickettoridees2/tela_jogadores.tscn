@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci0j4joceqg8g"]
+[gd_scene load_steps=9 format=3 uid="uid://ci0j4joceqg8g"]
 
 [ext_resource type="Texture2D" uid="uid://dqjajegvn4i5g" path="res://assets/20250503_1457_Plano_de_Fundo_Jogo_simple_compose_01jtbabfhxfggvgp7vb4fbqwvx.jpg" id="1_gxxp2"]
 [ext_resource type="Script" uid="uid://dsojkbk8dg5to" path="res://tela_jogadores.gd" id="1_xfro2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bcy4qhjvo8a5e" path="res://button_minus_player.gd" id="5_28fle"]
 [ext_resource type="Script" uid="uid://dxuukfb5atc54" path="res://button_start_game.gd" id="6_kqtek"]
 [ext_resource type="Script" uid="uid://bssrxsyvjkj21" path="res://button_back_menu.gd" id="6_mtal1"]
+[ext_resource type="Texture2D" uid="uid://b3d2gn22njrt1" path="res://assets/previous.png" id="6_swnhx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xfro2"]
 font_size = 24
@@ -51,8 +52,11 @@ offset_bottom = 279.0
 label_settings = SubResource("LabelSettings_xfro2")
 
 [node name="Button_back_menu" type="Button" parent="."]
-offset_left = 32.0
-offset_top = 516.0
-offset_right = 174.0
-offset_bottom = 612.0
+offset_left = 48.0
+offset_top = 536.0
+offset_right = 568.0
+offset_bottom = 1056.0
+scale = Vector2(0.150606, 0.150606)
+icon = ExtResource("6_swnhx")
+flat = true
 script = ExtResource("6_mtal1")
