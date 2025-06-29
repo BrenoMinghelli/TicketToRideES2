@@ -32,6 +32,20 @@ var baralho_destinos: BaralhoDestinos = BaralhoDestinos.new()
 
 @onready var label_mao = $Scroll_mao/Label_mao_jogador
 
+@onready var routes_container = $routes_container
+@onready var label_pontuacao = $Label_pontuacao
+
+const COR_HEX := {
+	Rota.Cor.Rosa:    "#FF69B4",
+	Rota.Cor.Branca:  "#FFFFFF",
+	Rota.Cor.Azul:    "#1E90FF",
+	Rota.Cor.Amarela: "#FFD700",
+	Rota.Cor.Laranja: "#FFA500",
+	Rota.Cor.Preta:   "#000000",
+	Rota.Cor.Vermelha:"#FF0000",
+	Rota.Cor.Verde:   "#32CD32"
+}
+
 func hide_button_action():
 	botao_comprar.visible = false
 	botao_conquistar.visible = false
@@ -110,6 +124,7 @@ func escolher_destino(indice: int):
 	
 func _registrar_bilhete_destino(carta: CartaDestino) -> void:
 	bilhetes_jogador.append(carta)
+	j1.adicionar_pontos(carta.pontos)
 	
 	var linha := "- %s – %s (%d pts)" % [carta.cidade1, carta.cidade2, carta.pontos]
 	
@@ -122,8 +137,15 @@ func _registrar_bilhete_destino(carta: CartaDestino) -> void:
 	# Garante que o scroll desça até a última linha
 	scroll_bilhetes.scroll_vertical = scroll_bilhetes.get_v_scroll_bar().max_value
 
+func _on_pontuacao_alterada(nova_pontuacao: int) -> void:
+	label_pontuacao.text = "Pontuação: %d" % nova_pontuacao
 
-func _on_botao_conquistar_pressed() -> void:
+func cor_para_color(cor_enum: int) -> Color:
+	var hex_str = COR_HEX.get(cor_enum, "#808080") # default cinza se não existir
+	return Color(hex_str)
+
+func _on_botao_conquistar_pressed(idx: int) -> void:
+	rota_selecionada = idx
 	if rota_selecionada < 0 or rota_selecionada >= rotas.size():
 		print("Nenhuma rota selecionada para conquistar!")
 		return
@@ -156,8 +178,48 @@ func _on_botao_conquistar_pressed() -> void:
 
 	rota_selecionada = -1
 	
-	j1.imprimir_mao()
+	j1.imprimir_mao() 
+	appear_button_action()
+	for child in routes_container.get_children():
+		routes_container.remove_child(child)
+		child.queue_free()
+	routes_container.hide()
 
+	
+func _on_opcao_rota_pressed(idx: int) -> void:
+	#routes_container.hide()
+	_on_botao_conquistar_pressed(idx)
+
+func _preencher_popup_rotas() -> void:
+	for child in routes_container.get_children():
+		routes_container.remove_child(child)
+		child.queue_free()
+	print(routes_container.get_child_count())
+	for i in rotas.size():
+		var rota = rotas[i]
+		if not rota.conquistada:
+			var cor_da_rota = rota.cor
+			var custo = rota.tamanho
+			var contagem = j1.contar_para_rota(cor_da_rota)
+			print(contagem)
+			if contagem["cor"] + contagem["coringa"] >= custo:
+				var btn = Button.new()
+				btn.text = "%d: %s ↔ %s (custo %d)" % [
+					i + 1, rota.cidade1, rota.cidade2, rota.tamanho
+				]
+				var c: Color = cor_para_color(rota.cor)
+				btn.add_theme_color_override("font_color", c)
+				btn.add_theme_color_override("font_color_hover", c.lightened(0.2))
+				btn.add_theme_color_override("font_color_pressed", c.darkened(0.2))
+				var handler := Callable(self, "_on_opcao_rota_pressed").bind(i)
+				btn.pressed.connect(handler)
+				routes_container.add_child(btn)
+				routes_container.show()
+	if routes_container.get_child_count() > 0:
+		print(routes_container.get_child_count())
+		hide_button_action()
+
+	
 func _ready():
 	hide_button_compra()
 	print(player_number)
@@ -168,7 +230,8 @@ func _ready():
 	baralho_destinos.inicializar_baralho()
 	baralho_destinos.embaralhar()
 	baralho_destinos.imprimir_baralho()
-
+	
+	
 	for i in range(5):
 		comprar_p1(5)
 
@@ -178,7 +241,10 @@ func _ready():
 		var ro = rotas[i]
 		print("Rota: %d - %s - %s, Tamanho = %d, Cor = %s"
 			% [i+1, ro.cidade1, ro.cidade2, ro.tamanho, Rota.Cor.keys()[ro.cor]])
-
+			
+	label_pontuacao.text = "Pontuação: %d" % j1.pontuacao
+	label_pontuacao.position = Vector2(1026, 600)
+	j1.connect("pontuacao_alterada", Callable(self, "_on_pontuacao_alterada"))
 	#se quiser testar em alguma rota basta mudar aqui.
 	rota_selecionada = -1
-	botao_conquistar.pressed.connect(_on_botao_conquistar_pressed)
+	botao_conquistar.pressed.connect(_preencher_popup_rotas)

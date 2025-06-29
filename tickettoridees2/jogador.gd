@@ -2,6 +2,7 @@ extends Node2D
 
 
 var mao: Array[Carta] = []
+signal pontuacao_alterada(nova_pontuacao : int)
 var pontuacao: int = 0
 var id: int = 1
 
@@ -76,3 +77,4 @@ func gastar_cartas_para_rota(cor_rota: int, custo: int) -> bool:
 	
 func adicionar_pontos(pontos_rota: int) -> void:
 	pontuacao += pontos_rota
+	emit_signal("pontuacao_alterada", pontuacao)

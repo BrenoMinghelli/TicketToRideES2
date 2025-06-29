@@ -154,3 +154,14 @@ offset_right = 1132.0
 offset_bottom = 336.0
 text = "destino 3"
 script = ExtResource("17_21a76")
+
+[node name="routes_container" type="VBoxContainer" parent="."]
+visible = false
+offset_left = 715.0
+offset_top = 9.0
+offset_right = 1061.0
+offset_bottom = 401.0
+
+[node name="Label_pontuacao" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

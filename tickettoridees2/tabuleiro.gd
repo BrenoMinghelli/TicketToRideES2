@@ -10,6 +10,4 @@ func init_rotas():
 	rotas.append(rota1)
 	rotas.append(rota2)
 	
-	
-	
 	return rotas

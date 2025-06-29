@@ -1,5 +1,8 @@
-ScrollContainer
 Label
+VBoxContainer
+RichTextLabel
+PanelContainer
+ScrollContainer
 Button
 Node
 Node2D
