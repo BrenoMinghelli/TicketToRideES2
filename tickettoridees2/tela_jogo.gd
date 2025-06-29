@@ -124,7 +124,6 @@ func escolher_destino(indice: int):
 	
 func _registrar_bilhete_destino(carta: CartaDestino) -> void:
 	bilhetes_jogador.append(carta)
-	j1.adicionar_pontos(carta.pontos)
 	
 	var linha := "- %s – %s (%d pts)" % [carta.cidade1, carta.cidade2, carta.pontos]
 	
