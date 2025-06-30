@@ -79,3 +79,5 @@ func gastar_cartas_para_rota(cor_rota: int, custo: int) -> bool:
 func adicionar_pontos(pontos_rota: int) -> void:
 	pontuacao += pontos_rota
 	emit_signal("pontuacao_alterada", pontuacao)
+	if pontuacao >= 30:
+		print("Parabens, Voce ganhou!!!!")

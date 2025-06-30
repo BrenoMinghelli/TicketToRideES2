@@ -1,16 +1,13 @@
 extends Node2D
 
-
-var jogadores: Array[Jogador] = []   # lista dos nós-jogador
-var jogador_atual_idx: int = 0       # índice do turno
-
-
 var player_number = 0
 var rotas: Array[Rota]
 var rota_selecionada: int = -1
 var destinos_em_oferta: Array[CartaDestino] = []
 var bilhetes_jogador: Array[CartaDestino] = [] 
 var baralho_destinos: BaralhoDestinos = BaralhoDestinos.new()
+var jogadores_ia: Array[JogadorComputador] = []
+
 
 # variáveis dos outros nodes para as funções funcionarem adequadamente
 @onready var baralho = $Baralho
@@ -142,6 +139,15 @@ func _registrar_bilhete_destino(carta: CartaDestino) -> void:
 	# Garante que o scroll desça até a última linha
 	scroll_bilhetes.scroll_vertical = scroll_bilhetes.get_v_scroll_bar().max_value
 
+func criar_jogadores_ia(total_ia: int):
+	for i in range(total_ia):
+		var ia = JogadorComputador.new()
+		ia.id = i + 2  # IDs começam em 2 (jogador humano é 1)
+		ia.baralho = baralho  # Passa referência do baralho
+		ia.setup(baralho_destinos, rotas)  # Passa destinos e rotas
+		jogadores_ia.append(ia)
+		print("IA #%d criada com sucesso." % ia.id)
+
 func _on_pontuacao_alterada(nova_pontuacao: int) -> void:
 	label_pontuacao.text = "Pontuação: %d" % nova_pontuacao
 
@@ -227,15 +233,7 @@ func _preencher_popup_rotas() -> void:
 	
 func _ready():
 	hide_button_compra()
-	
-	jogadores.append(j1)
-	for i in range(1, player_number):
-		var novo_jogador = $Jogador.duplicate()
-		add_child(novo_jogador)
-		novo_jogador.id = i + 1  
-		jogadores.append(novo_jogador)
-	# conecta o sinal do botão
-	#botao_passar_turno.pressed.connect(_on_button_passar_turno_pressed)
+
 	
 	print(player_number)
 	baralho.imprimir_baralho()
@@ -251,7 +249,8 @@ func _ready():
 		comprar_p1(5)
 
 	rotas = tabuleiro.init_rotas()
-
+	criar_jogadores_ia(player_number)
+	
 	for i in range(rotas.size()):
 		var ro = rotas[i]
 		print("Rota: %d - %s - %s, Tamanho = %d, Cor = %s"
@@ -266,11 +265,14 @@ func _ready():
 
 
 func _on_button_passar_turno_pressed() -> void:
-	# avança ao próximo jogador
-	jogador_atual_idx = (jogador_atual_idx + 1) % jogadores.size()
-	j1 = jogadores[jogador_atual_idx]
-
-	label_mao.text       = j1.atualizar_ui_mao()
-	label_pontuacao.text = "Pontuação: %d" % j1.pontuacao
-
-	print("Agora é a vez do jogador %d" % j1.id)
+	print("\n" + "=".repeat(50))
+	print("|        TURNO DOS ADVERSÁRIOS        |")
+	print("=".repeat(50) + "\n")
+	
+	for i in range(jogadores_ia.size()):
+		var ia = jogadores_ia[i]
+		ia.tomar_turno()
+		print("-".repeat(50))  # Separador entre IAs
+	
+	print("\n" + ">>> SEU TURNO! Faça sua jogada! <<<\n")
+		
