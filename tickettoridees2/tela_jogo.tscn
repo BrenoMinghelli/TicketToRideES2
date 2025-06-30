@@ -165,3 +165,12 @@ offset_bottom = 401.0
 [node name="Label_pontuacao" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="button_passar_turno" type="Button" parent="."]
+offset_left = 1029.0
+offset_top = 14.0
+offset_right = 1146.0
+offset_bottom = 76.0
+text = "Avançar turno"
+
+[connection signal="pressed" from="button_passar_turno" to="." method="_on_button_passar_turno_pressed"]

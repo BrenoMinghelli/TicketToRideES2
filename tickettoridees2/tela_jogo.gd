@@ -1,6 +1,10 @@
 extends Node2D
 
 
+var jogadores: Array[Jogador] = []   # lista dos nós-jogador
+var jogador_atual_idx: int = 0       # índice do turno
+
+
 var player_number = 0
 var rotas: Array[Rota]
 var rota_selecionada: int = -1
@@ -34,6 +38,8 @@ var baralho_destinos: BaralhoDestinos = BaralhoDestinos.new()
 
 @onready var routes_container = $routes_container
 @onready var label_pontuacao = $Label_pontuacao
+
+@onready var botao_passar_turno = $button_passar_turno 
 
 const COR_HEX := {
 	Rota.Cor.Rosa:    "#FF69B4",
@@ -221,6 +227,16 @@ func _preencher_popup_rotas() -> void:
 	
 func _ready():
 	hide_button_compra()
+	
+	jogadores.append(j1)
+	for i in range(1, player_number):
+		var novo_jogador = $Jogador.duplicate()
+		add_child(novo_jogador)
+		novo_jogador.id = i + 1  
+		jogadores.append(novo_jogador)
+	# conecta o sinal do botão
+	#botao_passar_turno.pressed.connect(_on_button_passar_turno_pressed)
+	
 	print(player_number)
 	baralho.imprimir_baralho()
 	
@@ -247,3 +263,14 @@ func _ready():
 	#se quiser testar em alguma rota basta mudar aqui.
 	rota_selecionada = -1
 	botao_conquistar.pressed.connect(_preencher_popup_rotas)
+
+
+func _on_button_passar_turno_pressed() -> void:
+	# avança ao próximo jogador
+	jogador_atual_idx = (jogador_atual_idx + 1) % jogadores.size()
+	j1 = jogadores[jogador_atual_idx]
+
+	label_mao.text       = j1.atualizar_ui_mao()
+	label_pontuacao.text = "Pontuação: %d" % j1.pontuacao
+
+	print("Agora é a vez do jogador %d" % j1.id)
