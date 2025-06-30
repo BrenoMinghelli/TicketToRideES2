@@ -1,11 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://do7nwlfnnbl84"]
+[gd_scene load_steps=18 format=3 uid="uid://bq0qyv74efpgx"]
 
-[ext_resource type="Script" uid="uid://fbufsbbha4hm" path="res://tela_jogo.gd" id="1_fyk8h"]
+[ext_resource type="Script" uid="uid://dm7f7ytq0tgan" path="res://tela_jogo.gd" id="1_fyk8h"]
 [ext_resource type="Texture2D" uid="uid://digf81jhb11fl" path="res://assets/mapa_jogo.jpg" id="2_250ra"]
 [ext_resource type="Script" uid="uid://cmiaj725euknc" path="res://panic_button_2.gd" id="2_fyk8h"]
 [ext_resource type="Script" uid="uid://bunmtguyctauv" path="res://tabuleiro.gd" id="3_fgria"]
 [ext_resource type="Script" uid="uid://ck2fi2odlj0jv" path="res://baralho.gd" id="4_250ra"]
-[ext_resource type="Script" uid="uid://b28vk84yyv6q" path="res://jogador.gd" id="5_63efy"]
+[ext_resource type="Script" uid="uid://ch1aou17e4fdl" path="res://jogador.gd" id="5_63efy"]
 [ext_resource type="Script" uid="uid://ctc33gjexp1j3" path="res://button_comprar.gd" id="6_owa68"]
 [ext_resource type="Script" uid="uid://c8xb6h5s38pds" path="res://button_comprar_topo.gd" id="7_fe401"]
 [ext_resource type="Script" uid="uid://dkkafs5ld21ch" path="res://button_comprar_pos_1.gd" id="8_b05ms"]
@@ -32,6 +32,7 @@ offset_left = 86.0
 offset_top = 548.0
 offset_right = 145.0
 offset_bottom = 591.0
+text = "Sair"
 script = ExtResource("2_fyk8h")
 
 [node name="Baralho" type="Node" parent="."]
